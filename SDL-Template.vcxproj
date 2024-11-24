@@ -211,7 +211,9 @@
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\NumberDrawer.cpp" />
     <ClCompile Include="src\Presenter.cpp" />
+    <ClCompile Include="src\Slider.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +221,9 @@
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\Engine.h" />
     <ClInclude Include="include\InputManager.h" />
+    <ClInclude Include="include\NumberDrawer.h" />
     <ClInclude Include="include\Presenter.h" />
+    <ClInclude Include="include\Slider.h" />
     <ClInclude Include="include\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

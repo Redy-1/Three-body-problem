@@ -55,7 +55,9 @@ void InputManager::handleInput()
 
             break;
         case SDL_MOUSEBUTTONUP:
-
+            if (m_event.button.button == SDL_BUTTON_LEFT) {
+                m_mouseIsHolded = false;
+            }
             break;
         case SDL_TEXTINPUT:
 

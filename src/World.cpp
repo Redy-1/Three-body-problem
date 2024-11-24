@@ -24,13 +24,16 @@ void World::init()
 	background_rect.y = 0;
 	background_rect.x = screen_w;
 	background_rect.y = screen_h;
-	
+
 	m_presenter.init();
+
+	m_numberDrawer.init();
+
 	Body::txt = loadTexture("circle.bmp");
 
-	bodies.push_back(Body(1, double2(1000, 500), double2(1, 1)));
-	bodies.push_back(Body(1, double2(1100, 400), double2(-1, 1)));
-	bodies.push_back(Body(1, double2(1200, 600), double2(0, 0)));
+	bodies.push_back(Body(1, { 1000,500 }, { 1,1 }));
+	bodies.push_back(Body(1, { 1100,400 }, { -1,1 }));
+	bodies.push_back(Body(1, { 1200,600 }, { 0,0 }));
 }
 
 
@@ -41,6 +44,7 @@ void World::run()
 	currentTime = SDL_GetPerformanceCounter();
 	deltaTime = (float)((currentTime - lastTime) * 1000.0f / (float)SDL_GetPerformanceFrequency());
 	deltaTime /= 16.0f; /// TODO: config
+
 
 	m_inputManager.handleInput();
 
@@ -55,18 +59,20 @@ void World::run()
 		printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
 	}
 	
-	drawObject(background_texture);
-	
+	//drawObject(background_texture);
+
+	m_numberDrawer.drawNum("123.567.2", { 200, 200 }, 50);
+
 	m_presenter.draw();
-	
+
 }
 
 // call destroy for all classes to prevent memory leak
-void World::destroy()
-{
+void World::destroy() {
+	m_numberDrawer.destruct();
+
 	SDL_DestroyRenderer(m_presenter.m_main_renderer);
 
 	SDL_DestroyWindow(m_presenter.m_main_window);
-
 }
 

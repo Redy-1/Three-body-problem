@@ -84,11 +84,6 @@ struct float2 {
 };
 
 struct double2 {
-	double2() {};
-	double2(double x1, double y1) {
-		x = x1;
-		y = y1;
-	}
 	double x = 0, y = 0;
 
 	void reset() { x = 0; y = 0; };
