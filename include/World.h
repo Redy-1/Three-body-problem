@@ -2,6 +2,7 @@
 
 #include "Presenter.h"
 #include "InputManager.h"
+#include "Body.h"
 
 class World
 {
@@ -17,5 +18,5 @@ public:
 	void destroy();
 	
 private:
-	
+	vector<Body> bodies;
 };

@@ -1,7 +1,8 @@
 #include "Body.h"
 
-Body::Body(double m, double2 p, double2 v = double2(0, 0))
-{
+Body::Body(double m, 
+	double2 p, 
+	double2 v = {0, 0}) {
 	mass = m;
 	position = p;
 	velocity = v;

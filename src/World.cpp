@@ -16,8 +16,6 @@ void World::init()
 	background_rect.x = screen_w;
 	background_rect.y = screen_h;
 	m_presenter.init();
-	
-	m_presenter.init();
 }
 
 
@@ -26,9 +24,9 @@ void World::run()
 {
 	m_inputManager.handleInput();
 	drawObject(background_texture);
-	
+
 	m_presenter.draw();
-	
+
 }
 
 // call destroy for all classes to prevent memory leak

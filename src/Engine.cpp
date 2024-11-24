@@ -77,3 +77,18 @@ bool checkInOffBounds(SDL_Rect rect, int screenWidth, int screenHeight)
     return false;
 }
 
+int rangeMap(int from_low, int from_high, int to_low, int to_high, int val) {
+    double from_diff = (from_high - from_low);
+    double to_diff = (to_high - to_low);
+    double proportion = ((val - from_low) / from_diff);
+    int ret = ((int)round(proportion * to_diff) + to_low);
+    /*if (to_low < 20) {
+        std::cout << "rMap: " << from_low << " - " << from_high << "\t->\t" << to_low << " - " << to_high << "\t(" << val << ")\n";
+        std::cout << "\t\t ret: " << ret << '\n';
+    }*/
+    return ret;
+}
+
+bool coordInRect(int2 coor, SDL_Rect rect) {
+    return (coor.x >= rect.x && coor.x <= rect.x + rect.w - 1 && coor.y >= rect.y && coor.y <= rect.y + rect.h - 1);
+}
