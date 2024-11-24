@@ -1,4 +1,7 @@
 #include "Body.h"
+#include "World.h"
+
+extern float deltaTime;
 
 Body::Body(double m, double2 p, double2 v = double2(0,0))
 {
@@ -13,7 +16,7 @@ Body::~Body()
 
 void Body::update_position()
 {
-	position += velocity * 1;
+	position += velocity * deltaTime;
 }
 
 void Body::update_velocity(Body& other)
@@ -22,5 +25,5 @@ void Body::update_velocity(Body& other)
 	double2 acc;
 	acc.x = dpos.x * other.mass * gravConst / (pow(dpos.x * dpos.x + dpos.y * dpos.y, 1.5));
 	acc.y = dpos.y * other.mass * gravConst / (pow(dpos.x * dpos.x + dpos.y * dpos.y, 1.5));
-	velocity += acc * 1;
+	velocity += acc * deltaTime;
 }
