@@ -67,7 +67,10 @@ void World::run()
 
 	
 	Uint64 cTime = SDL_GetPerformanceCounter();
-	SDL_Delay((currentTime + frameTime - cTime) * 1000 / SDL_GetPerformanceFrequency());
+	int64_t delay = ((int64_t)currentTime + (int64_t)frameTime - (int64_t)cTime) * 1000 / (int64_t)SDL_GetPerformanceFrequency();
+	if (delay > 0) {
+		SDL_Delay(delay);
+	}
 	
 }
 
