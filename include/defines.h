@@ -82,6 +82,10 @@ struct float2 {
 };
 
 struct double2 {
+	double2(double x, double y) {
+		this->x = x;
+		this->y = y;
+	}
 	double x = 0, y = 0;
 
 	void reset() { x = 0; y = 0; };
