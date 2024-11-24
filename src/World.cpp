@@ -24,7 +24,6 @@ void World::init()
 	background_rect.y = 0;
 	background_rect.x = screen_w;
 	background_rect.y = screen_h;
-	m_presenter.init();
 	
 	m_presenter.init();
 }
