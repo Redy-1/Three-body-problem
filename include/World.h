@@ -16,7 +16,7 @@ public:
 	void init();
 	void run();
 	void destroy();
-	
+
 private:
 	vector<Body> bodies;
 };

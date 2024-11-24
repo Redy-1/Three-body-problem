@@ -1,3 +1,4 @@
+#pragma once
 #include "Engine.h"
 
 class Body {
@@ -10,5 +11,5 @@ public:
 	double2 velocity;
 
 	void update_position();
-	void update_velocity();
+	void update_velocity(Body&);
 };
