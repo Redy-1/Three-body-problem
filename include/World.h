@@ -19,6 +19,5 @@ public:
 	void run();
 	void destroy();
 
-private:
 	vector<Body> bodies;
 };

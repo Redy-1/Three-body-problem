@@ -24,10 +24,16 @@ void World::init()
 	background_rect.y = 0;
 	background_rect.x = screen_w;
 	background_rect.y = screen_h;
-	
+
 	m_presenter.init();
 
 	m_numberDrawer.init();
+
+	
+
+	bodies.push_back(Body(1, { 500,500 }, { 1,1 }, 255, 255, 0));
+	bodies.push_back(Body(1, { 1100,200 }, { -1,1 }, 255, 0, 0));
+	bodies.push_back(Body(3, { 1700,600 }, { 0,0 }, 0, 255, 255));
 }
 
 
@@ -50,6 +56,7 @@ void World::run()
 
 	for (int i = 0; i < bodies.size(); i++) {
 		bodies[i].update_position();
+		printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
 	}
 	
 	//drawObject(background_texture);
