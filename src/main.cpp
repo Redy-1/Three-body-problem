@@ -9,7 +9,7 @@ int main(int* argc, char* argv[])
 	srand((NULL));
 	world.init();
 
-	while (world.isRunning())
+	while (true)
 	{
 		world.run();
 	}

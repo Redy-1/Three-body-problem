@@ -21,19 +21,7 @@
     <ClCompile Include="src\InputManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Board.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tile.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WinScreen.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Menu.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,22 +35,10 @@
     <ClInclude Include="include\World.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\Board.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\defines.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Tile.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\WinScreen.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Menu.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
