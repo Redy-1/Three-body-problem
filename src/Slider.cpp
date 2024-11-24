@@ -47,15 +47,12 @@ void Slider::draw() {
 	drawObject(body);
 	drawObject(thumb);
 
-	/// TODO:
-	// drawNum(to_string(val), { rect.x + rect.w + 20, rect.y-1 }, 32);
+	drawNum(to_string(val), { body.rect.x + body.rect.w + 20, body.rect.y-1 }, 32);
 }
 
 void Slider::destruct() {
 	if (deleteTextures) {
 		SDL_DestroyTexture(body.texture);
-		delete body.texture;
 		SDL_DestroyTexture(thumb.texture);
-		delete thumb.texture;
 	}
 }

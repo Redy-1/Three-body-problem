@@ -26,6 +26,8 @@ void World::init()
 	background_rect.y = screen_h;
 	
 	m_presenter.init();
+
+	m_numberDrawer.init();
 }
 
 
@@ -36,6 +38,7 @@ void World::run()
 	currentTime = SDL_GetPerformanceCounter();
 	deltaTime = (float)((currentTime - lastTime) * 1000.0f / (float)SDL_GetPerformanceFrequency());
 	deltaTime /= 16.0f; /// TODO: config
+
 
 	m_inputManager.handleInput();
 
@@ -49,18 +52,20 @@ void World::run()
 		bodies[i].update_position();
 	}
 	
-	drawObject(background_texture);
+	//drawObject(background_texture);
+
+	m_numberDrawer.drawNum("123.567.2", { 200, 200 }, 50);
 
 	m_presenter.draw();
 
 }
 
 // call destroy for all classes to prevent memory leak
-void World::destroy()
-{
+void World::destroy() {
+	m_numberDrawer.destruct();
+
 	SDL_DestroyRenderer(m_presenter.m_main_renderer);
 
 	SDL_DestroyWindow(m_presenter.m_main_window);
-
 }
 
