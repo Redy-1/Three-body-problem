@@ -207,25 +207,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Board.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Presenter.cpp" />
-    <ClCompile Include="src\Tile.cpp" />
-    <ClCompile Include="src\WinScreen.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Board.h" />
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\Engine.h" />
     <ClInclude Include="include\InputManager.h" />
-    <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\Presenter.h" />
-    <ClInclude Include="include\Tile.h" />
-    <ClInclude Include="include\WinScreen.h" />
     <ClInclude Include="include\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
