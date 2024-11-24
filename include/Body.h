@@ -10,5 +10,5 @@ public:
 	double2 velocity;
 
 	void update_position();
-	void update_velocity();
+	void update_velocity(Body&);
 };
