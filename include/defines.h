@@ -46,10 +46,10 @@ struct int2 {
 
 	void reset() { x = 0; y = 0; };
 	void set(int2 b) { x = b.x; y = b.y; };
-	void operator+=(int2 a) { x += a.x; y += b.y; };
-	void operator-=(int2 a) { x -= a.x; y -= b.y; };
-	void operator*=(int2 a) { x *= a.x; y *= b.y; };
-	void operator/=(int2 a) { x /= a.x; y /= b.y; };
+	void operator+=(int2 a) { x += a.x; y += a.y; };
+	void operator-=(int2 a) { x -= a.x; y -= a.y; };
+	void operator*=(int2 a) { x *= a.x; y *= a.y; };
+	void operator/=(int2 a) { x /= a.x; y /= a.y; };
 	int2 operator+(int2 a) const { return { x + a.x, y + a.y }; };
 	int2 operator-(int2 a) const { return { x - a.x, y - a.y }; };
 	int2 operator*(int2 a) const { return { x * a.x, y * a.y }; };
@@ -66,10 +66,10 @@ struct float2 {
 
 	void reset() { x = 0; y = 0; };
 	void set(float2 b) { x = b.x; y = b.y; };
-	void operator+=(float2 a) { x += a.x; y += b.y; };
-	void operator-=(float2 a) { x -= a.x; y -= b.y; };
-	void operator*=(float2 a) { x *= a.x; y *= b.y; };
-	void operator/=(float2 a) { x /= a.x; y /= b.y; };
+	void operator+=(float2 a) { x += a.x; y += a.y; };
+	void operator-=(float2 a) { x -= a.x; y -= a.y; };
+	void operator*=(float2 a) { x *= a.x; y *= a.y; };
+	void operator/=(float2 a) { x /= a.x; y /= a.y; };
 	float2 operator+(float2 a) const { return { x + a.x, y + a.y }; };
 	float2 operator-(float2 a) const { return { x - a.x, y - a.y }; };
 	float2 operator*(float2 a) const { return { x * a.x, y * a.y }; };
@@ -90,10 +90,10 @@ struct double2 {
 
 	void reset() { x = 0; y = 0; };
 	void set(double2 b) { x = b.x; y = b.y; };
-	void operator+=(double2 a) { x += a.x; y += b.y; };
-	void operator-=(double2 a) { x -= a.x; y -= b.y; };
-	void operator*=(double2 a) { x *= a.x; y *= b.y; };
-	void operator/=(double2 a) { x /= a.x; y /= b.y; };
+	void operator+=(double2 a) { x += a.x; y += a.y; };
+	void operator-=(double2 a) { x -= a.x; y -= a.y; };
+	void operator*=(double2 a) { x *= a.x; y *= a.y; };
+	void operator/=(double2 a) { x /= a.x; y /= a.y; };
 	double2 operator+(double2 a) const { return { x + a.x, y + a.y }; };
 	double2 operator-(double2 a) const { return { x - a.x, y - a.y }; };
 	double2 operator*(double2 a) const { return { x * a.x, y * a.y }; };
