@@ -18,6 +18,7 @@ void World::init()
 	
 	background_texture = loadTexture("better_background.bmp");
 	
+	m_presenter.init();
 }
 
 
