@@ -26,6 +26,11 @@ void World::init()
 	background_rect.y = screen_h;
 	
 	m_presenter.init();
+	Body::txt = loadTexture("circle.bmp");
+
+	bodies.push_back(Body(1, double2(1000, 500), double2(1, 1)));
+	bodies.push_back(Body(1, double2(1100, 400), double2(-1, 1)));
+	bodies.push_back(Body(1, double2(1200, 600), double2(0, 0)));
 }
 
 
@@ -47,6 +52,7 @@ void World::run()
 
 	for (int i = 0; i < bodies.size(); i++) {
 		bodies[i].update_position();
+		printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
 	}
 	
 	drawObject(background_texture);

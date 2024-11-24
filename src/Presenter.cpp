@@ -58,6 +58,7 @@ void Presenter::update()
 
 void Presenter::draw()
 {
+    for (auto b : world.bodies) b.draw();
     SDL_RenderPresent(m_main_renderer);
 
     SDL_RenderClear(m_main_renderer);

@@ -10,6 +10,10 @@ public:
 	double2 position;
 	double2 velocity;
 
+	static SDL_Texture* txt;
+
 	void update_position();
 	void update_velocity(Body&);
+
+	void draw(int r = 50);
 };

@@ -2,6 +2,8 @@
 #include "World.h"
 
 extern float deltaTime;
+extern World world;
+SDL_Texture* Body::txt;
 
 Body::Body(double m, double2 p, double2 v = double2(0,0))
 {
@@ -26,4 +28,12 @@ void Body::update_velocity(Body& other)
 	acc.x = dpos.x * other.mass * gravConst / (pow(dpos.x * dpos.x + dpos.y * dpos.y, 1.5));
 	acc.y = dpos.y * other.mass * gravConst / (pow(dpos.x * dpos.x + dpos.y * dpos.y, 1.5));
 	velocity += acc * deltaTime;
+}
+
+void Body::draw(int r)
+{
+	Drawable dr;
+	dr.texture = txt;
+	dr.rect = { int(position.x) - r,int(position.y) - r,r,r };
+	world.m_presenter.drawObject(dr);
 }
