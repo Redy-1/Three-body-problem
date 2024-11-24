@@ -15,8 +15,7 @@ void World::init()
 	background_rect.y = 0;
 	background_rect.x = screen_w;
 	background_rect.y = screen_h;
-	
-	background_texture = loadTexture("better_background.bmp");
+	m_presenter.init();
 	
 }
 

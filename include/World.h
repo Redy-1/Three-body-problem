@@ -15,8 +15,6 @@ public:
 	void init();
 	void run();
 	void destroy();
-
-
 	
 private:
 	
