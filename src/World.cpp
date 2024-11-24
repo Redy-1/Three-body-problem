@@ -1,7 +1,7 @@
 #include "World.h"
 #include <time.h>
 
-float deltaTime;
+double deltaTime;
 
 World::World()
 {
@@ -11,14 +11,18 @@ World::~World()
 {
 }
 
-
+int fps = 60;
 Uint64 currentTime = 0;
 Uint64 lastTime = 0;
+Uint64 frameTime;
 
 void World::init()
 {
-	currentTime = SDL_GetPerformanceCounter();
 	lastTime = SDL_GetPerformanceCounter();
+	SDL_Delay(1000 / fps);
+	currentTime = SDL_GetPerformanceCounter();
+	
+	frameTime = SDL_GetPerformanceFrequency() / fps;
 
 	background_rect.x = 0;
 	background_rect.y = 0;
@@ -29,23 +33,19 @@ void World::init()
 
 	m_numberDrawer.init();
 
-	
-
-	bodies.push_back(Body(1, { 500,500 }, { 1,1 }, 255, 255, 0));
-	bodies.push_back(Body(1, { 1100,200 }, { -1,1 }, 255, 0, 0));
-	bodies.push_back(Body(3, { 1700,600 }, { 0,0 }, 0, 255, 255));
+	bodies.push_back(Body(1, { 700,500 }, { 100,100 }, 255, 255, 0));
+	bodies.push_back(Body(1, { 1100,200 }, { -100,100 }, 255, 0, 0));
+	bodies.push_back(Body(1, { 1500,600 }, { -50,0 }, 0, 255, 255));
 }
 
 
 
 void World::run()
-{
-	lastTime = currentTime;
+{ 
 	currentTime = SDL_GetPerformanceCounter();
-	deltaTime = (float)((currentTime - lastTime) * 1000.0f / (float)SDL_GetPerformanceFrequency());
-	deltaTime /= 16.0f; /// TODO: config
-
-
+	deltaTime = double(currentTime - lastTime) / SDL_GetPerformanceFrequency();
+	lastTime = currentTime - frameTime;
+	cout << deltaTime << endl;
 	m_inputManager.handleInput();
 
 	for (int i = 0; i < bodies.size(); i++) {
@@ -56,7 +56,7 @@ void World::run()
 
 	for (int i = 0; i < bodies.size(); i++) {
 		bodies[i].update_position();
-		printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
+		// printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
 	}
 	
 	//drawObject(background_texture);
@@ -65,6 +65,10 @@ void World::run()
 
 	m_presenter.draw();
 
+	
+	Uint64 cTime = SDL_GetPerformanceCounter();
+	SDL_Delay((currentTime + frameTime - cTime) * 1000 / SDL_GetPerformanceFrequency());
+	
 }
 
 // call destroy for all classes to prevent memory leak

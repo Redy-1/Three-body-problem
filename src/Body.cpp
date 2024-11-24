@@ -1,7 +1,7 @@
 #include "Body.h"
 #include "World.h"
 
-extern float deltaTime;
+extern double deltaTime;
 extern World world;
 
 Body::Body(double m, double2 p, double2 v, Uint8 cr, Uint8 cg, Uint8 cb) {
