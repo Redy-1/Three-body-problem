@@ -82,9 +82,10 @@ struct float2 {
 };
 
 struct double2 {
-	double2(double x, double y) {
-		this->x = x;
-		this->y = y;
+	double2() {};
+	double2(double x1, double y1) {
+		x = x1;
+		y = y1;
 	}
 	double x = 0, y = 0;
 
