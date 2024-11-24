@@ -29,11 +29,11 @@ void World::init()
 
 	m_numberDrawer.init();
 
-	Body::txt = loadTexture("circle.bmp");
+	
 
-	bodies.push_back(Body(1, { 1000,500 }, { 1,1 }));
-	bodies.push_back(Body(1, { 1100,400 }, { -1,1 }));
-	bodies.push_back(Body(1, { 1200,600 }, { 0,0 }));
+	bodies.push_back(Body(1, { 500,500 }, { 1,1 }, 255, 255, 0));
+	bodies.push_back(Body(1, { 1100,200 }, { -1,1 }, 255, 0, 0));
+	bodies.push_back(Body(3, { 1700,600 }, { 0,0 }, 0, 255, 255));
 }
 
 
