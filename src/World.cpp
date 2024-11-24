@@ -38,6 +38,17 @@ void World::run()
 	deltaTime /= 16.0f; /// TODO: config
 
 	m_inputManager.handleInput();
+
+	for (int i = 0; i < bodies.size(); i++) {
+		for (int j = 0; j < bodies.size(); j++) {
+			if (i != j) bodies[i].update_velocity(bodies[j]);
+		}
+	}
+
+	for (int i = 0; i < bodies.size(); i++) {
+		bodies[i].update_position();
+	}
+	
 	drawObject(background_texture);
 	
 	m_presenter.draw();
