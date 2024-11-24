@@ -39,16 +39,71 @@ const int offset_x = (screen_w-tile_w*br_cols)/2;\
 static SDL_Rect background_rect;
 static SDL_Texture* background_texture;
 
-struct int2
-{
-    int x = 0;
-    int y = 0;
+typedef Uint32 Time;
+
+struct int2 {
+	int x = 0, y = 0;
+
+	void reset() { x = 0; y = 0; };
+	void set(int2 b) { x = b.x; y = b.y; };
+	void operator+=(int2 a) { x += a.x; y += a.y; };
+	void operator-=(int2 a) { x -= a.x; y -= a.y; };
+	void operator*=(int2 a) { x *= a.x; y *= a.y; };
+	void operator/=(int2 a) { x /= a.x; y /= a.y; };
+	int2 operator+(int2 a) const { return { x + a.x, y + a.y }; };
+	int2 operator-(int2 a) const { return { x - a.x, y - a.y }; };
+	int2 operator*(int2 a) const { return { x * a.x, y * a.y }; };
+	int2 operator/(int2 a) const { return { x / a.x, y / a.y }; };
+	int2 operator*(int a) const { return { x * a , y * a }; };
+	int2 operator/(int a) const { return { x / a , y / a }; };
+	int2 operator-() const { return { -x, -y }; };
+	bool operator==(int2 a) const { return (x == a.x && y == a.y); };
+	bool operator!=(int2 a) const { return (x != a.x || y != a.y); };
 };
 
-struct float2
-{
-    float x = 0;
-    float y = 0;
+struct float2 {
+	float x = 0, y = 0;
+
+	void reset() { x = 0; y = 0; };
+	void set(float2 b) { x = b.x; y = b.y; };
+	void operator+=(float2 a) { x += a.x; y += a.y; };
+	void operator-=(float2 a) { x -= a.x; y -= a.y; };
+	void operator*=(float2 a) { x *= a.x; y *= a.y; };
+	void operator/=(float2 a) { x /= a.x; y /= a.y; };
+	float2 operator+(float2 a) const { return { x + a.x, y + a.y }; };
+	float2 operator-(float2 a) const { return { x - a.x, y - a.y }; };
+	float2 operator*(float2 a) const { return { x * a.x, y * a.y }; };
+	float2 operator/(float2 a) const { return { x / a.x, y / a.y }; };
+	float2 operator*(float a) const { return { x * a , y * a }; };
+	float2 operator/(float a) const { return { x / a , y / a }; };
+	float2 operator-() const { return { -x, -y }; };
+	bool operator==(float2 a) const { return (x == a.x && y == a.y); };
+	bool operator!=(float2 a) const { return (x != a.x || y != a.y); };
+};
+
+struct double2 {
+	double2() {};
+	double2(double x1, double y1) {
+		x = x1;
+		y = y1;
+	}
+	double x = 0, y = 0;
+
+	void reset() { x = 0; y = 0; };
+	void set(double2 b) { x = b.x; y = b.y; };
+	void operator+=(double2 a) { x += a.x; y += a.y; };
+	void operator-=(double2 a) { x -= a.x; y -= a.y; };
+	void operator*=(double2 a) { x *= a.x; y *= a.y; };
+	void operator/=(double2 a) { x /= a.x; y /= a.y; };
+	double2 operator+(double2 a) const { return { x + a.x, y + a.y }; };
+	double2 operator-(double2 a) const { return { x - a.x, y - a.y }; };
+	double2 operator*(double2 a) const { return { x * a.x, y * a.y }; };
+	double2 operator/(double2 a) const { return { x / a.x, y / a.y }; };
+	double2 operator*(double a) const { return { x * a , y * a }; };
+	double2 operator/(double a) const { return { x / a , y / a }; };
+	double2 operator-() const { return { -x, -y }; };
+	bool operator==(double2 a) const { return (x == a.x && y == a.y); };
+	bool operator!=(double2 a) const { return (x != a.x || y != a.y); };
 };
 
 enum class SOUND
