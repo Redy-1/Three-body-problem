@@ -58,10 +58,9 @@ void World::run()
 		bodies[i].update_position();
 		printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
 	}
+	std::cout << "---\n";
 	
-	//drawObject(background_texture);
-
-	m_numberDrawer.drawNum("123.567.2", { 200, 200 }, 50);
+	drawObject(background_texture);
 
 	m_presenter.draw();
 

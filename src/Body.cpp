@@ -32,8 +32,8 @@ void Body::update_velocity(Body& other)
 void Body::setColor(Uint8 cr, Uint8 cg, Uint8 cb) {
 	SDL_SetTextureColorMod(txt, cr, cg, cb);
 }
-void Body::draw(int r)
-{
+void Body::draw(int r) {
+	if (r == -1) { r = (double) sqrt(mass) * 30.0; }
 	Drawable dr;
 	dr.texture = txt;
 	dr.rect = { int(position.x) - r,int(position.y) - r,r,r };

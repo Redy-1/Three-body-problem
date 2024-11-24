@@ -13,8 +13,8 @@ public:
 	SDL_Texture* txt;
 
 	void update_position();
-	void update_velocity(Body&);
+	void update_velocity(Body& other);
 
-	void setColor(Uint8, Uint8, Uint8);
-	void draw(int = 50);
+	void setColor(Uint8 cr, Uint8 cg, Uint8 cb);
+	void draw(int r = -1);
 };
