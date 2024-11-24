@@ -62,6 +62,8 @@ void World::run()
 	
 	drawObject(background_texture);
 
+	for (auto b : bodies) { b.draw(); }
+
 	m_presenter.draw();
 
 }
