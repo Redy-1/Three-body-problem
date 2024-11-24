@@ -14,6 +14,6 @@ public:
 
 	void init(int2 coord, SDL_Texture* bodyTexture, SDL_Texture* thumbTexture, int width, int _min, int _max, int initialValue, int* _callback, bool _deleteTextures = false);
 	void update();
-	void draw();
+	void draw(bool drawValue = true);
 	void destruct();
 };

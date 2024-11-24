@@ -3,7 +3,7 @@
 
 extern float deltaTime;
 
-Body::Body(double m, double2 p, double2 v = { 0,0 }) {
+Body::Body(double m, double2 p, double2 v) {
 	mass = m;
 	position = p;
 	velocity = v;

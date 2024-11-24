@@ -43,11 +43,13 @@ void Slider::update() {
 	if (callback) { *callback = val; }
 }
 
-void Slider::draw() {
+void Slider::draw(bool drawValue) {
 	drawObject(body);
 	drawObject(thumb);
 
-	drawNum(to_string(val), { body.rect.x + body.rect.w + 20, body.rect.y-1 }, 32);
+	if (drawValue) {
+		drawNum(to_string(val), { body.rect.x + body.rect.w + 20, body.rect.y-1 }, 32);
+	}
 }
 
 void Slider::destruct() {

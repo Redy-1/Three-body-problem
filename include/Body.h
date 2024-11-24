@@ -3,7 +3,7 @@
 
 class Body {
 public:
-	Body(double,double2,double2);
+	Body(double m, double2 p, double2 v = {0, 0});
 	~Body();
 
 	double mass;
