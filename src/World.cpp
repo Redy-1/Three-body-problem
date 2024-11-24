@@ -21,7 +21,7 @@ void World::init()
 	lastTime = SDL_GetPerformanceCounter();
 	SDL_Delay(1000 / fps);
 	currentTime = SDL_GetPerformanceCounter();
-	
+	deltaTime = 1. / fps;
 	frameTime = SDL_GetPerformanceFrequency() / fps;
 
 	background_rect.x = 0;
@@ -33,9 +33,9 @@ void World::init()
 
 	m_numberDrawer.init();
 
-	bodies.push_back(Body(1, { 700,500 }, { 100,100 }, 255, 255, 0));
-	bodies.push_back(Body(1, { 1100,200 }, { -100,100 }, 255, 0, 0));
-	bodies.push_back(Body(1, { 1500,600 }, { -50,0 }, 0, 255, 255));
+	bodies.push_back(Body(1, { 900,500 }, { 0,50 }, 255, 255, 0));
+	bodies.push_back(Body(1, { 1000,500 }, { 0,0 }, 255, 0, 0));
+	bodies.push_back(Body(1, { 1100,500 }, { 0,-50 }, 0, 255, 255));
 }
 
 
@@ -43,7 +43,6 @@ void World::init()
 void World::run()
 { 
 	currentTime = SDL_GetPerformanceCounter();
-	deltaTime = double(currentTime - lastTime) / SDL_GetPerformanceFrequency();
 	lastTime = currentTime - frameTime;
 	cout << deltaTime << endl;
 	m_inputManager.handleInput();
