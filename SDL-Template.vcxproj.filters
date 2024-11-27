@@ -24,6 +24,9 @@
     <ClCompile Include="src\Engine.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Body.cpp" />
+    <ClCompile Include="src\NumberDrawer.cpp" />
+    <ClCompile Include="src\Slider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\InputManager.h">
@@ -41,5 +44,8 @@
     <ClInclude Include="include\Engine.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\Body.h" />
+    <ClInclude Include="include\NumberDrawer.h" />
+    <ClInclude Include="include\Slider.h" />
   </ItemGroup>
 </Project>

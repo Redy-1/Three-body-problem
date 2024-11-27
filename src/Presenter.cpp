@@ -21,9 +21,9 @@ void Presenter::init()
 
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
-    m_main_window = SDL_CreateWindow("Queens",
+    m_main_window = SDL_CreateWindow("Three body problem",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        1366, 768, 0);
+        m_SCREEN_WIDTH, m_SCREEN_HEIGHT, 0);
     m_main_renderer = SDL_CreateRenderer(m_main_window,
         -1, SDL_RENDERER_PRESENTVSYNC);
     improveRenderer();
@@ -41,7 +41,7 @@ void Presenter::improveRenderer()
     mouseMultiply.x = (double)m_SCREEN_WIDTH / (double)desktopWidth;
     mouseMultiply.y = (double)m_SCREEN_HEIGHT / (double)desktopHeight;
 
-    if (SDL_SetWindowFullscreen(m_main_window, SDL_WINDOW_FULLSCREEN_DESKTOP) < 0)
+    if (false && SDL_SetWindowFullscreen(m_main_window, SDL_WINDOW_FULLSCREEN_DESKTOP) < 0)
     {
         cout << "SDL_IMPROVE_RENDERER FAILED: %s\n" << SDL_GetError() << endl;
     }

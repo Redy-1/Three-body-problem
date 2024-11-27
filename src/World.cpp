@@ -1,5 +1,7 @@
 #include "World.h"
 #include <time.h>
+#include <format>
+#include <numbers>
 
 double deltaTime;
 
@@ -33,9 +35,15 @@ void World::init()
 
 	m_numberDrawer.init();
 
-	bodies.push_back(Body(1, { 900,500 }, { 0,50 }, 255, 255, 0));
-	bodies.push_back(Body(1, { 1000,500 }, { 0,0 }, 255, 0, 0));
-	bodies.push_back(Body(1, { 1100,500 }, { 0,-50 }, 0, 255, 255));
+//	bodies.push_back(Body(1, { 500/1000.0,500 /1000.0}, { 0,50 / 1000.0 }, 255, 255, 0));
+//	/bodies.push_back(Body(1, { 1000/1000.0,500/1000.0 }, { 0,0 / 1000.0 }, 255, 0, 0));
+//	bodies.push_back(Body(1, { 1500/1000.0,500/1000.0 }, { 0,-50 / 1000.0 }, 0, 255, 255));
+
+	bodies = { 
+		{ 1.0, { 0.8, 0.5 }, { 0, 0.11 }, { 0, 0 }, 255, 255, 0, loadTexture("circle.bmp") },
+		{ 100.0, { 1.0, 0.5 }, { 0, 0.0 }, { 0, 0 }, 255, 0, 0, loadTexture("circle.bmp") },
+		{ 1.0, { 1.2, 0.5 }, { 0, -0.09 }, { 0, 0 }, 0, 255, 255, loadTexture("circle.bmp") },
+	};
 }
 
 
@@ -44,21 +52,60 @@ void World::run()
 { 
 	currentTime = SDL_GetPerformanceCounter();
 	lastTime = currentTime - frameTime;
-	cout << deltaTime << endl;
-	m_inputManager.handleInput();
+	//cout << deltaTime << endl;
+  	m_inputManager.handleInput();
+/*
+	for (auto& body : bodies)
+	{
+		body.acc = { 0.0, 0.0 };
+	}
 
 	for (int i = 0; i < bodies.size(); i++) {
 		for (int j = 0; j < bodies.size(); j++) {
+			cout << i << " " << j << " ";
 			if (i != j) bodies[i].update_velocity(bodies[j]);
+			cout << "\n";
 		}
 	}
 
 	for (int i = 0; i < bodies.size(); i++) {
-		bodies[i].update_position();
+		cout << std::format("UPDATED {} ", i);
+		bodies[i].update_position(); 
+		cout << "\n";
+//		cout << bodies[i].velocity.x << " " << bodies[i].velocity.y<<endl;
 		// printf("%f %f\n", bodies[i].position.x, bodies[i].position.y);
 	}
+
 	std::cout << "---\n";
-	
+*/
+
+	vector<Body> new_bodies;
+	new_bodies.resize(bodies.size());
+
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		new_bodies[i] = bodies[i];
+		new_bodies[i].position = bodies[i].position + bodies[i].velocity * deltaTime + bodies[i].acc * deltaTime * deltaTime / 2;
+		double2 acc = { 0, 0 };
+		for (int j = 0; j < bodies.size(); j++)
+		{
+			if (i != j)
+			{
+				double2 offset = bodies[j].position - bodies[i].position;
+				double distance = hypot(offset.x, offset.y);
+				double distance3 = distance * distance * distance;
+				double force = bodies[j].mass * gravConst / distance3;
+				acc.x += force * offset.x;
+				acc.y += force * offset.y;
+			}
+		}
+
+		new_bodies[i].acc = acc;
+		new_bodies[i].velocity = bodies[i].velocity + (bodies[i].acc + new_bodies[i].acc) * deltaTime / 2;
+	}
+
+	swap(bodies, new_bodies);
+
 	drawObject(background_texture);
 
 	for (auto b : bodies) { b.draw(); }
@@ -68,6 +115,9 @@ void World::run()
 	
 	Uint64 cTime = SDL_GetPerformanceCounter();
 	int64_t delay = ((int64_t)currentTime + (int64_t)frameTime - (int64_t)cTime) * 1000 / (int64_t)SDL_GetPerformanceFrequency();
+	//cout << deltaTime << endl;
+	//cout << delay << endl;
+
 	if (delay > 0) {
 		SDL_Delay(delay);
 	}

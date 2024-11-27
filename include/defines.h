@@ -41,7 +41,7 @@ static SDL_Texture* background_texture;
 
 typedef Uint32 Time;
 
-static double gravConst = 500000;
+static double gravConst = 0.0015;
 
 struct int2 {
 	int x = 0, y = 0;
