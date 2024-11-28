@@ -48,7 +48,7 @@ void Body::draw(int r) {
 	SDL_FRect rect;
 	SDL_Texture* texture;
 	texture = txt;
-	rect = { (float)position.x*1000 - r,(float)position.y * 1000 - r, (float)r, (float)r };
+	rect = { (float)position.x - r,(float)position.y  - r, (float)r, (float)r };
 	
 	SDL_SetTextureColorMod(txt, cr, cg, cb);
 	SDL_RenderCopyF(Presenter::m_main_renderer, texture, NULL, &rect);
