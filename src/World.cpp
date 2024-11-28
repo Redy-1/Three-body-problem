@@ -2,6 +2,7 @@
 #include <time.h>
 #include <format>
 #include <numbers>
+#include <list>
 
 double deltaTime;
 
@@ -17,6 +18,9 @@ int fps = 60;
 Uint64 currentTime = 0;
 Uint64 lastTime = 0;
 Uint64 frameTime;
+
+std::list<double2> trail[3];
+const int trailSize = 6000;
 
 void World::init()
 {
@@ -109,6 +113,15 @@ void World::run()
 	drawObject(background_texture);
 
 	for (auto b : bodies) { b.draw(); }
+
+	for (int i = 0; i < 3; i++) {
+		SDL_SetRenderDrawColor(m_presenter.m_main_renderer, bodies[i].cr, bodies[i].cg, bodies[i].cb, 0.5);
+		trail[i].push_back(bodies[i].position);
+		if (trail[i].size() > trailSize) trail[i].pop_front();
+		for (auto it = next(trail[i].begin()); it != trail[i].end(); it++) {
+			SDL_RenderDrawLineF(m_presenter.m_main_renderer, (*prev(it)).x, (*prev(it)).y, (*it).x, (*it).y);
+		}
+	}
 
 	m_presenter.draw();
 

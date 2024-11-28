@@ -40,7 +40,7 @@ void Body::update_velocity(Body& other)
 	cout << std::format("acc {}:{} ", acc.x, acc.y);
 }
 void Body::draw(int r) {
-	if (r == -1) { r = (double) sqrt(mass) * 30.0; }
+	if (r == -1) { r = (double) sqrt(mass) * 15.0; }
 	//Drawable dr;
 	//dr.texture = txt;
 	//dr.rect = { int(position.x) - r,int(position.y) - r,r,r };
@@ -48,7 +48,7 @@ void Body::draw(int r) {
 	SDL_FRect rect;
 	SDL_Texture* texture;
 	texture = txt;
-	rect = { (float)position.x - r,(float)position.y  - r, (float)r, (float)r };
+	rect = { (float)position.x - r,(float)position.y  - r, 2*(float)r, 2*(float)r };
 	
 	SDL_SetTextureColorMod(txt, cr, cg, cb);
 	SDL_RenderCopyF(Presenter::m_main_renderer, texture, NULL, &rect);

@@ -60,6 +60,7 @@ void Presenter::draw()
 {
     SDL_RenderPresent(m_main_renderer);
 
+    SDL_SetRenderDrawColor(m_main_renderer, 0, 0, 0, 1);
     SDL_RenderClear(m_main_renderer);
 }
 
