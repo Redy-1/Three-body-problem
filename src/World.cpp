@@ -85,11 +85,12 @@ void World::run()
 
 	vector<Body> new_bodies;
 	new_bodies.resize(bodies.size());
-
+	for (int i = 0; i < bodies.size(); i++) {
+		bodies[i].position = bodies[i].position + bodies[i].velocity * deltaTime + bodies[i].acc * deltaTime * deltaTime / 2;
+		new_bodies[i] = bodies[i];
+	}
 	for (int i = 0; i < bodies.size(); i++)
 	{
-		new_bodies[i] = bodies[i];
-		new_bodies[i].position = bodies[i].position + bodies[i].velocity * deltaTime + bodies[i].acc * deltaTime * deltaTime / 2;
 		double2 acc = { 0, 0 };
 		for (int j = 0; j < bodies.size(); j++)
 		{
